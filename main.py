@@ -5,7 +5,7 @@ import win32event
 import win32service
 import win32serviceutil
 
-import scaleapi
+import simple_api
 
 
 # <<< Windows Service
@@ -26,7 +26,7 @@ class GBSScale(win32serviceutil.ServiceFramework):
         '''
         Used to stop the service utility (restart / timeout / shutdown)
         '''
-        scaleapi.stop_server()
+        simple_api.stop_server()
         self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
         win32event.SetEvent(self.hWaitStop)
 
@@ -34,7 +34,7 @@ class GBSScale(win32serviceutil.ServiceFramework):
         '''
         Used to execute all the piece of code that you want service to perform.
         '''
-        scaleapi.run_server()
+        simple_api.run_server()
         
 # >>> Windows Service
 
